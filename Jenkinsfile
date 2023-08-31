@@ -23,9 +23,6 @@ pipeline {
                     def userInput = input(
                         id: 'manualApproval',
                         message: 'Lanjutkan ke tahap Deploy?',
-                        parameters: [
-                            choice(choices: ['Proceed', 'Abort'], description: 'Pilih opsi', name: 'approvalChoice')
-                        ]
                     )
                     if (userInput.approvalChoice == 'Abort') {
                         sh './jenkins/scripts/kill.sh'
