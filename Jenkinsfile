@@ -19,15 +19,7 @@ pipeline {
 
         stage('Manual Approval') {
             steps {
-                script {
-                    def userInput = input(
-                        id: 'manualApproval',
-                        message: 'Lanjutkan ke tahap Deploy?',
-                    )
-                    if (userInput.approvalChoice == 'Abort') {
-                        sh './jenkins/scripts/kill.sh'
-                    }
-                }
+                input message: 'Lanjutkan ke tahap Deploy?? (Klik "Proceed" untuk lanjut)' 
             }
         }
 
