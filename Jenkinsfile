@@ -19,7 +19,18 @@ pipeline {
 
         stage('Manual Approval') {
             steps {
-                input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)' 
+                script {
+                    def userInput = input(
+                        id: 'manualApproval',
+                        message: 'Lanjutkan ke tahap Deploy?',
+                        parameters: [
+                            choice(choices: ['Proceed', 'Abort'], description: 'Pilih opsi', name: 'approvalChoice')
+                        ]
+                    )
+                    if (userInput.approvalChoice == 'Abort') {
+                        error("Pipeline dihentikan oleh pengguna.")
+                    }
+                }
             }
         }
 
