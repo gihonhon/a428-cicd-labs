@@ -28,7 +28,7 @@ pipeline {
                         ]
                     )
                     if (userInput.approvalChoice == 'Abort') {
-                        error("Pipeline dihentikan oleh pengguna.")
+                        sh './jenkins/scripts/kill.sh'
                     }
                 }
             }
