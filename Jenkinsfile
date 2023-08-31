@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'node:16-buster-slim'
-            args '-p 3001:3000'
+            args '-p 3000:3000'
         }
     }
     stages {
@@ -19,7 +19,8 @@ pipeline {
 
         stage('Manual Approval') {
             steps {
-                input message: 'Lanjutkan ke tahap Deploy?' 
+                input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)' 
+            }
         }
 
         stage('Deploy') { 
