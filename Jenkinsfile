@@ -19,12 +19,7 @@ pipeline {
 
         stage('Manual Approval') {
             steps {
-                script {
-                    def userInput = input(
-                        id: 'manualApproval',
-                        message: 'Lanjutkan ke tahap Deploy?',
-                    )
-            }
+                input message: 'Lanjutkan ke tahap Deploy?' 
         }
 
         stage('Deploy') { 
